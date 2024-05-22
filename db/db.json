@@ -1,0 +1,77 @@
+{
+    "ingredients": {
+      "bread": [
+        {
+          "id": 1,
+          "type": "Plain White"
+        },
+        {
+            "id": 2,
+            "type": "Brioche"
+        },
+        {
+            "id": 3,
+            "type": "Ciabatta"
+        }
+      ],
+      "meat": [
+        {
+          "id": 1,
+          "type": "Brisket"
+        },
+        {
+          "id": 2,
+          "type": "Wagyu"
+        },
+        {
+          "id": 3,
+          "type": "Pork"
+        },
+        {
+          "id": 4,
+          "type": "Veggie"
+        }
+      ],
+      "optional": [
+        {
+          "id": 1,
+          "type": "Bacon"
+        },
+        {
+          "id": 2,
+          "type": "Cheddar"
+        },
+        {
+          "id": 3,
+          "type": "Lettuce"
+        },
+        {
+          "id": 4,
+          "type": "Tomato"
+        },
+        {
+          "id": 4,
+          "type": "Onion"
+        },
+        {
+          "id": 4,
+          "type": "Cucumber"
+        }
+      ]
+    },
+    "status": [
+      {
+        "id": 1,
+        "type": "Requested"
+      },
+      {
+        "id": 2,
+        "type": "In production"
+      },
+      {
+        "id": 3,
+        "type": "Finished"
+      }
+    ],
+    "burgers": []
+  }
