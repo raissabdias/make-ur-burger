@@ -40,7 +40,7 @@ export default {
         font-weight: 600;
         text-decoration: none;
         transition: .5s;
-        margin-left: 30px;
+        margin-left: 40px;
         text-shadow: 1px 1px 1px solid;
         font-size: 1.2em;
     }

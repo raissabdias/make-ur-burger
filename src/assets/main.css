@@ -1,1 +1,10 @@
 @import './base.css';
+
+.main-container {
+    margin: 50px;
+    min-height: 65vh;
+}
+
+h1 {
+    text-align: center;
+}

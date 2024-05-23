@@ -1,8 +1,5 @@
 <template>
-  <div class="order">
+  <div class="main-container">
     <h1>Orders</h1>
   </div>
 </template>
-
-<style>
-</style>
