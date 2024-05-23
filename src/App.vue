@@ -5,7 +5,18 @@ import Footer from './components/Footer.vue'
 </script>
 
 <template>
-  <Navbar />
+  <Navbar :logo="logo_src" :alt="app_name" />
   <RouterView />
   <Footer />
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      logo_src: "/img/logo.png",
+      app_name: "Make Ur Burger"
+    }
+  }
+}
+</script>
