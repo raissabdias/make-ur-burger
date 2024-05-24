@@ -4,18 +4,18 @@
         <div>
             <form id="burger-form" method="POST" @submit="createBurger">
                 <div class="input-container">
-                    <label for="name">Name</label>
+                    <label for="name">Name<span class="form-error">{{ error.name }}</span></label>
                     <input type="text" id="name" name="name" v-model="name" placeholder="Enter your name">
                 </div>
                 <div class="input-container">
-                    <label for="bread">Bread</label>
+                    <label for="bread">Bread<span class="form-error">{{ error.bread }}</span></label>
                     <select name="bread" id="bread" v-model="bread">
                         <option value="0">Choose your bread</option>
                         <option v-for="bread in bread_data" :key="bread.id" :value="bread.type">{{ bread.type }}</option>
                     </select>
                 </div>
                 <div class="input-container">
-                    <label for="meat">Meat</label>
+                    <label for="meat">Meat<span class="form-error">{{ error.meat }}</span></label>
                     <select name="meat" id="meat" v-model="meat">
                         <option value="0">Choose your meat</option>
                         <option v-for="meat in meat_data" :key="meat.id" :value="meat.type">{{ meat.type }}</option>
@@ -45,11 +45,16 @@ export default {
             meat_data: null,
             optionals_data: null,
             name: null,
-            bread: 0,
-            meat: 0,
+            bread: null,
+            meat: null,
             optionals: [],
             status: 'Request',
-            message: null
+            message: null,
+            error: {
+                bread: "*",
+                meat: "*",
+                name: "*"
+            }
         }
     },
     methods: {
@@ -61,26 +66,53 @@ export default {
             this.meat_data = ingredients.meat;
             this.optionals_data = ingredients.optional;
         },
+        validate() {
+            var error = 0;
+
+            this.clearError();
+
+            if (!this.name || this.name.length < 5) {
+                this.error.name = ' Name must have at least 5 characters';
+                error++;
+            }
+
+            if (!this.bread || this.bread.length < 1) {
+                this.error.bread = ' Bread is mandatory';
+                error++;
+            }
+
+            if (!this.meat || this.bread.length < 1) {
+                this.error.meat = ' Meat is mandatory';
+                error++;
+            }
+
+            return (error === 0);
+        },
+        clearError: function() {
+            this.error.name = this.error.bread = this.error.meat = '*';
+        },
         async createBurger(e) {
             e.preventDefault();
 
-            const data = {
-                name: this.name,
-                bread: this.bread,
-                meat: this.meat,
-                optionals: Object.keys(this.optionals),
-                status: 'Requested'
-            };
-            
-            const data_json = JSON.stringify(data);
+            if (this.validate()) {
+                const data = {
+                    name: this.name,
+                    bread: this.bread,
+                    meat: this.meat,
+                    optionals: Object.keys(this.optionals),
+                    status: 'Requested'
+                };
+                
+                const data_json = JSON.stringify(data);
 
-            const request = await fetch("http://localhost:3000/burgers", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: data_json
-            });
+                const request = await fetch("http://localhost:3000/burgers", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: data_json
+                });
 
-            const response = await request.json();
+                const response = await request.json();
+            }
         }
     },
     mounted() {
@@ -154,5 +186,11 @@ export default {
 
     .btn-submit:hover {
         background: white;
+    }
+
+    .form-error {
+        color: red;
+        font-size: .8em;
+        font-weight: 400;
     }
 </style>
