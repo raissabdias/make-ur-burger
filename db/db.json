@@ -1,77 +1,86 @@
 {
-    "ingredients": {
-      "bread": [
-        {
-          "id": 1,
-          "type": "Plain White"
-        },
-        {
-            "id": 2,
-            "type": "Brioche"
-        },
-        {
-            "id": 3,
-            "type": "Ciabatta"
-        }
-      ],
-      "meat": [
-        {
-          "id": 1,
-          "type": "Brisket"
-        },
-        {
-          "id": 2,
-          "type": "Wagyu"
-        },
-        {
-          "id": 3,
-          "type": "Pork"
-        },
-        {
-          "id": 4,
-          "type": "Veggie"
-        }
-      ],
-      "optional": [
-        {
-          "id": 1,
-          "type": "Bacon"
-        },
-        {
-          "id": 2,
-          "type": "Cheddar"
-        },
-        {
-          "id": 3,
-          "type": "Lettuce"
-        },
-        {
-          "id": 4,
-          "type": "Tomato"
-        },
-        {
-          "id": 5,
-          "type": "Onion"
-        },
-        {
-          "id": 6,
-          "type": "Cucumber"
-        }
-      ]
-    },
-    "status": [
+  "ingredients": {
+    "bread": [
       {
         "id": 1,
-        "type": "Requested"
+        "type": "Plain White"
       },
       {
         "id": 2,
-        "type": "In production"
+        "type": "Brioche"
       },
       {
         "id": 3,
-        "type": "Finished"
+        "type": "Ciabatta"
       }
     ],
-    "burgers": []
-  }
+    "meat": [
+      {
+        "id": 1,
+        "type": "Brisket"
+      },
+      {
+        "id": 2,
+        "type": "Wagyu"
+      },
+      {
+        "id": 3,
+        "type": "Pork"
+      },
+      {
+        "id": 4,
+        "type": "Veggie"
+      }
+    ],
+    "optional": [
+      {
+        "id": 1,
+        "type": "Bacon"
+      },
+      {
+        "id": 2,
+        "type": "Cheddar"
+      },
+      {
+        "id": 3,
+        "type": "Lettuce"
+      },
+      {
+        "id": 4,
+        "type": "Tomato"
+      },
+      {
+        "id": 5,
+        "type": "Onion"
+      },
+      {
+        "id": 6,
+        "type": "Cucumber"
+      }
+    ]
+  },
+  "status": [
+    {
+      "id": "1",
+      "type": "Requested"
+    },
+    {
+      "id": "2",
+      "type": "In production"
+    },
+    {
+      "id": "3",
+      "type": "Finished"
+    }
+  ],
+  "burgers": [
+    {
+      "id": "eba5",
+      "name": null,
+      "bread": "Ciabatta",
+      "meat": 0,
+      "optionals": [],
+      "status": "Requested"
+    }
+  ]
+}
