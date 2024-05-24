@@ -75,35 +75,56 @@
   ],
   "burgers": [
     {
-      "id": "eba5",
-      "name": null,
+      "id": "245b",
+      "name": "Raíssa Dias",
+      "bread": "Brioche",
+      "meat": "Wagyu",
+      "optionals": [
+        "Bacon",
+        "Lettuce",
+        "Onion",
+        "Cheddar",
+        "Tomato"
+      ],
+      "status": "Requested"
+    },
+    {
+      "id": "64fb",
+      "name": "Aurora",
+      "bread": "Plain White",
+      "meat": "Veggie",
+      "optionals": [
+        "Onion",
+        "Lettuce",
+        "Cucumber",
+        "Tomato"
+      ],
+      "status": "Requested"
+    },
+    {
+      "id": "6b17",
+      "name": "Dewindson Costa",
       "bread": "Ciabatta",
-      "meat": 0,
-      "optionals": [],
+      "meat": "Pork",
+      "optionals": [
+        "Bacon",
+        "Lettuce",
+        "Cucumber",
+        "Tomato",
+        "Cheddar"
+      ],
       "status": "Requested"
     },
     {
-      "id": "4949",
-      "name": "Raissa Dias",
-      "bread": null,
-      "meat": null,
-      "optionals": [],
-      "status": "Requested"
-    },
-    {
-      "id": "2424",
-      "name": "Raíssa",
+      "id": "ca99",
+      "name": "Lenore",
       "bread": "Brioche",
-      "meat": "Wagyu",
-      "optionals": [],
-      "status": "Requested"
-    },
-    {
-      "id": "8e6c",
-      "name": "Raíssa",
-      "bread": "Brioche",
-      "meat": "Wagyu",
-      "optionals": [],
+      "meat": "Veggie",
+      "optionals": [
+        "Lettuce",
+        "Cheddar",
+        "Tomato"
+      ],
       "status": "Requested"
     }
   ]

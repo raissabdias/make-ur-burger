@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Message component</p>
+        <Message :msg="msg" v-show="msg" />
         <div>
             <form id="burger-form" method="POST" @submit="createBurger">
                 <div class="input-container">
@@ -24,7 +24,7 @@
                 <div class="input-container" id="optionals-container">
                     <label for="optional">Select your optionals</label>
                     <div class="checkbox-container" v-for="optional in optionals_data" :key="optional.id">
-                        <input type="checkbox" name="optional" :value="optional.type">
+                        <input v-model="optionals" type="checkbox" name="optionals" :value="optional.type">
                         <span>{{ optional.type }}</span>
                     </div>
                 </div>
@@ -37,19 +37,24 @@
 </template>
 
 <script>
+import Message from './Message.vue';
+
 export default {
     name: "BurgerForm",
+    components: {
+        Message
+    },
     data() {
         return {
             bread_data: null,
             meat_data: null,
             optionals_data: null,
             name: null,
-            bread: null,
-            meat: null,
+            bread: 0,
+            meat: 0,
             optionals: [],
             status: 'Request',
-            message: null,
+            msg: null,
             error: {
                 bread: "*",
                 meat: "*",
@@ -71,8 +76,8 @@ export default {
 
             this.clearError();
 
-            if (!this.name || this.name.length < 5) {
-                this.error.name = ' Name must have at least 5 characters';
+            if (!this.name || this.name.length < 3) {
+                this.error.name = ' Name must have at least 3 characters';
                 error++;
             }
 
@@ -99,10 +104,10 @@ export default {
                     name: this.name,
                     bread: this.bread,
                     meat: this.meat,
-                    optionals: Object.keys(this.optionals),
+                    optionals: Object.values(this.optionals),
                     status: 'Requested'
                 };
-                
+
                 const data_json = JSON.stringify(data);
 
                 const request = await fetch("http://localhost:3000/burgers", {
@@ -112,6 +117,17 @@ export default {
                 });
 
                 const response = await request.json();
+
+                if (response.id !== undefined) {
+                    this.msg = `Order #${response.id} placed successfully!`;
+                }
+
+                setTimeout(() => this.msg = "", 3000);
+
+                this.name = "";
+                this.bread = 0;
+                this.meat = 0;
+                this.optionals = "";
             }
         }
     },
