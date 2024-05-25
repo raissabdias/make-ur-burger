@@ -9,25 +9,12 @@
                 <th>Optionals</th>
                 <th>Ações</th>
             </tr>
-            <tr>
-                <td>0001</td>
-                <td>Raíssa Dias</td>
-                <td>Bread</td>
-                <td>Meat</td>
-                <td>Optionals</td>
-                <td>
-                    <select name="status" class="status">
-                        <option>Select the burger status</option>
-                    </select>
-                    <button class="btn-delete">Cancel</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0001</td>
-                <td>Raíssa Dias</td>
-                <td>Bread</td>
-                <td>Meat</td>
-                <td>Optionals</td>
+            <tr v-for="burger in burgers" :key="burger.id">
+                <td>{{ burger.id }}</td>
+                <td>{{ burger.name }}</td>
+                <td>{{ burger.bread }}</td>
+                <td>{{ burger.meat }}</td>
+                <td> {{ burger.optionals.join(', ') }}</td>
                 <td>
                     <select name="status" class="status">
                         <option>Select the burger status</option>
@@ -41,7 +28,25 @@
 
 <script>
 export default {
-    name: "Dashboard"
+    name: "Dashboard",
+    data() {
+        return {
+            burgers: null,
+            burger_id: null,
+            status: []
+        }
+    },
+    methods: {
+        async getOrders() {
+            const request = await fetch("http://localhost:3000/burgers");
+            const burgers = await request.json();
+            this.burgers = burgers;
+            console.log(burgers);
+        }
+    },
+    mounted() {
+        this.getOrders();
+    }
 }
 </script>
 
