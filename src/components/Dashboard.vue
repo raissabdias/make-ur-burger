@@ -17,7 +17,9 @@
                 <td> {{ burger.optionals.join(', ') }}</td>
                 <td>
                     <select name="status" class="status">
-                        <option>Select the burger status</option>
+                        <option v-for="stat in status" :key="stat.id" :value="stat.type" :selected="burger.status == stat.type">
+                            {{ stat.type }}
+                        </option>
                     </select>
                     <button class="btn-delete">Cancel</button>
                 </td>
@@ -41,7 +43,14 @@ export default {
             const request = await fetch("http://localhost:3000/burgers");
             const burgers = await request.json();
             this.burgers = burgers;
-            console.log(burgers);
+
+            this.getStatus();
+        },
+        async getStatus() {
+            const request = await fetch("http://localhost:3000/status");
+            const status = await request.json();
+            console.log(status);
+            this.status = status;
         }
     },
     mounted() {
