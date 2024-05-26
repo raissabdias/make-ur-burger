@@ -21,7 +21,7 @@
                             {{ stat.type }}
                         </option>
                     </select>
-                    <button class="btn-delete">Cancel</button>
+                    <button class="btn-delete" @click="deleteBurger(burger.id)">Cancel</button>
                 </td>
             </tr>
         </table>
@@ -49,8 +49,14 @@ export default {
         async getStatus() {
             const request = await fetch("http://localhost:3000/status");
             const status = await request.json();
-            console.log(status);
             this.status = status;
+        },
+        async deleteBurger(id) {
+            const request = await fetch(`http://localhost:3000/burgers/${id}`, {
+                method: 'DELETE'
+            });
+
+            this.getOrders();
         }
     },
     mounted() {

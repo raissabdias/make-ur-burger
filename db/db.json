@@ -136,19 +136,6 @@
         "Bacon"
       ],
       "status": "Requested"
-    },
-    {
-      "id": "7b8d",
-      "name": "Dewindson Wolfheat",
-      "bread": "Brioche",
-      "meat": "Wagyu",
-      "optionals": [
-        "Bacon",
-        "Lettuce",
-        "Cheddar",
-        "Tomato"
-      ],
-      "status": "Requested"
     }
   ]
 }
