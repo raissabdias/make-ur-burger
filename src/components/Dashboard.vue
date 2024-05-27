@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Message :msg="msg" v-show="msg" />
         <table id="burger-table">
             <tr>
                 <th>#</th>
@@ -16,7 +17,7 @@
                 <td>{{ burger.meat }}</td>
                 <td> {{ burger.optionals.join(', ') }}</td>
                 <td>
-                    <select name="status" class="status">
+                    <select name="status" class="status" @change="updateStatus(burger.id, $event)">
                         <option v-for="stat in status" :key="stat.id" :value="stat.type" :selected="burger.status == stat.type">
                             {{ stat.type }}
                         </option>
@@ -29,14 +30,20 @@
 </template>
 
 <script>
+import Message from './Message.vue';
+
 export default {
     name: "Dashboard",
     data() {
         return {
             burgers: null,
             burger_id: null,
-            status: []
+            status: [],
+            msg: null
         }
+    },
+    components: {
+        Message
     },
     methods: {
         async getOrders() {
@@ -55,6 +62,26 @@ export default {
             const request = await fetch(`http://localhost:3000/burgers/${id}`, {
                 method: 'DELETE'
             });
+
+            this.msg = `Order #${id} was deleted successfully!`;
+            setTimeout(() => this.msg = "", 3000);
+
+            this.getOrders();
+        },
+        async updateStatus(id, event) {
+            const status = event.target.value;
+            const update = JSON.stringify({status: status});
+
+            const request = await fetch(`http://localhost:3000/burgers/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: update
+            });
+
+            this.msg = `Order #${id} was updated successfully!`;
+            setTimeout(() => this.msg = "", 3000);
 
             this.getOrders();
         }

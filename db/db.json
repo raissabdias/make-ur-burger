@@ -125,17 +125,20 @@
         "Cheddar",
         "Tomato"
       ],
-      "status": "Requested"
+      "status": "In production"
     },
     {
-      "id": "e024",
-      "name": "João da Silva",
-      "bread": "Ciabatta",
-      "meat": "Pork",
+      "id": "2b66",
+      "name": "Peter Steele",
+      "bread": "Brioche",
+      "meat": "Veggie",
       "optionals": [
-        "Bacon"
+        "Bacon",
+        "Lettuce",
+        "Tomato",
+        "Cheddar"
       ],
-      "status": "Requested"
+      "status": "In production"
     }
   ]
 }
